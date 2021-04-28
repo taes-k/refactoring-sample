@@ -25,10 +25,10 @@ public class StatementTest
                 new Performance("hamlet", 55)
                 , new Performance("as-like", 35)
                 , new Performance("othello", 40)));
-        Statement statement = new Statement();
+        Statement statement = new Statement(plays);
 
         // when
-        statement.printCharge(invoice, plays);
+        statement.printCharge(invoice);
 
         // then
         Assertions.assertTrue(true);

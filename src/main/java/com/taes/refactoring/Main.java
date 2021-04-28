@@ -21,7 +21,7 @@ public class Main
                 , new Performance("as-like", 35)
                 , new Performance("othello", 40)));
 
-        Statement statement = new Statement();
-        statement.printCharge(invoice, plays);
+        Statement statement = new Statement(plays);
+        statement.printCharge(invoice);
     }
 }
