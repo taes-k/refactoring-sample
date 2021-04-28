@@ -22,6 +22,6 @@ public class Main
                 , new Performance("othello", 40)));
 
         Statement statement = new Statement(plays);
-        statement.printCharge(invoice);
+        statement.printPlainText(invoice);
     }
 }
