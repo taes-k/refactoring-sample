@@ -106,45 +106,14 @@ public class Statement
         return nf.format(number/100);
     }
 
-    private int volumeCreditsFor(Performance perf)
+    private int volumeCreditsFor(Performance performance)
     {
-        int result = 0;
-        result += Math.max(perf.getAudience() - 30, 0);
-
-        // 희극 관객 5명마다 추가 포인트적립
-        if (playFor(perf).getType().equals("comedy"))
-        {
-            result += Math.floor(perf.getAudience() / 5);
-        }
-
-        return result;
+        return PerformanceCaculator.createPerformanceCalculator(performance, playFor(performance)).getVolumeCredit();
     }
 
     private int amountFor(Performance performance)
     {
-        int result;
-        switch (playFor(performance).getType())
-        {
-            case "tragedy": //비극
-                result = 40000;
-                if (performance.getAudience() > 30)
-                {
-                    result += 1000 * (performance.getAudience() - 30);
-                }
-                break;
-            case "comedy": //희극
-                result = 30000;
-                if (performance.getAudience() > 20)
-                {
-                    result += 10000 + 500 * (performance.getAudience() - 20);
-                }
-                result += 300 * performance.getAudience();
-                break;
-            default:
-                String errorMessage = String.format("알수없는 장르 : %s", playFor(performance).getType());
-                throw new RuntimeException(errorMessage);
-        }
-        return result;
+        return PerformanceCaculator.createPerformanceCalculator(performance, playFor(performance)).getAmount();
     }
 
     private Play playFor(Performance performance)

@@ -32,7 +32,6 @@ public class StatementTest
 
         // then
         Assertions.assertTrue(true);
-
     }
 
     @Test
@@ -58,6 +57,5 @@ public class StatementTest
 
         // then
         Assertions.assertTrue(true);
-
     }
 }
